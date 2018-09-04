@@ -1,0 +1,66 @@
+Building the js file for Dogeslots
+
+############
+
+Premise:
+	Dogeslots is a 3 reel slot machine game. To buy into one round of the game, the player inserts one coin, or token. A set of three reels then "spins" from a selection of 12 choices (the numbers 1-9, and three special symbols). If the reels select a specified 3-combo set (example: three bork! symbols), the player is awarded extra tokens that they may then use to play again. If the randomized draw of the three reels do not match any pre-determined sets within the internal engine of the js file, the player's token is "lost" to the "house", and they are invited to try their luck again until their stock of tokens are exhausted.
+
+Objects:
+	
+	slotsMachine = {
+
+		//three arrays set as the possible values of reels one, two and three
+		reelOne = ["won", "2", "3", "4", "5", "6", "7", "8", "9", "doge", "nCage", "bork"]
+		reelTwo = ["won", "2", "3", "4", "5", "6", "7", "8", "9", "doge", "nCage", "bork"]
+		reelThree= ["won", "2", "3", "4", "5", "6", "7", "8", "9", "doge", "nCage", "bork"]
+
+		playValid: function() {
+			//sets a boolean flag: if the player has inserted a coin into the coinslot, playValid will be set to TRUE, from its default FALSE state. A FALSE state makes it impossible to use any other function in slotsMachine object (set an auto-response in UI? "Plz insert a dogecoin 2 pl-ayyyyy(lmao)")
+		}
+
+		pullLever: function(reelOne, reelTwo, reelThree) {
+			//internally, "pulling" the lever will activate a randomize JS function, that will then record the randomly selected values from arrays reelOne, reelTwo and reelThree, and then insert those into a new array in the local(??) scope
+
+			this.randomize(reelOne, reelTwo, reelThree) 
+				insert into resultsArray = [something, somethingelse, yetmoresomething]
+		}
+
+		payOut: function () {
+			winsNormal: if reelOne === reelTwo === reelThree EXCEPTING reelOne,Two,Three == 7
+				Payout 1 dogecoin to player's pot
+
+			winsSpecial: if reelOne === reelTwo === reelThree AND all three are nCage or bork
+				Payout 2 dogecoin to player's pot
+
+			winsPlusUltra: if reelOne === reelTwo === reelThree AND all three are doge OR all three are 7's
+				Payout 5 dogecoin to player's pot
+
+			//Otherwise, no wins. 
+		}
+	}//close slotsMachine
+
+	player = {
+
+		dogecoins: 5	//initialize a player with 5 dogecoins
+		wins: 0			//init with 0 wins recorded
+		loses: 0		//init with 0 losses recorded
+
+		playSlots: function () {
+			dogecoins - 1 on every instance of this function
+			if dogecoins = 0 do not allow player to continue using this function
+		}
+
+		onWin: function () {
+			if pullLever has been called, and any payOut conditions are met, increment wins by one
+		}
+
+		onLose: function () {
+			if pullLever has been called, and NO payOut conditions are met, increment loses by one
+		}
+	}
+
+
+	uiControl => {
+		The values of the arrays in reelsOne, reelsTwo, and reelsThree should be directly represented on the HTML document. This function will make sure the act of "pulling" the lever on the slot machine randomizes the reels in such a way that they can be perceived by the user, ie I need to implement code that will slow, then speed up, then slow down the randomization enough to allow the illusion of a mechanical slot machine.
+	}
+
