@@ -18,7 +18,9 @@ Each reel will have 12 symbols on it: the numbers 1 to 9, lucky Doge, a Nicolas 
 		- Three sevens or three ones = 3 dogecoins
 		- Three borks! or three Cages = 2 dogecoins
 
-		\- Stretch goal: Any two sequential matches will give a free play. For example: drawing a 3, 3, and a doge, or a bork!, 5 and 5 but NOT a 5, bork! and closing with a 5. The free play conditional will be mentioned in the modul menu (assuming I can implement the function correctly)
+		- Stretch goal: Any two sequential matches will give a free play. 
+		For example: drawing a 3, 3, and a doge, or a bork!, 5 and 5 but NOT a 5, bork! and closing with a 5. 
+		The free play conditional will be mentioned in the modul menu (assuming I can implement the function correctly)
 
 Game is over when yuo have no more dogecoin to give doge. Mister Lucky Doge reminds yuo to play very responsible. Much addict. Very danger. 
 
