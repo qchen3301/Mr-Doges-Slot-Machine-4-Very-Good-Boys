@@ -2,22 +2,27 @@
 
 // <div>	<img src=urls[0]></div>
 
+	//coins represents the player's pot of tokens. The game instansiates with 5 coins
+	let coins = 5
 
-$("#play").click(function(){alert("You pud in one dogecoin!")})
+	
+		$("#play").click( function() {	
+			coins--
+			$("#userCoins").text(`${coins}x shinebois`)
+			console.log(coins)
+			if (coins < 1){
+				alert("Hey u! No more shinybois uwu")
+				$("#play").attr("disabled","disabled")}
+			else {
+				alert("U put in a dogecoin")		
+			}
+		})//close inner .click function()
+			
+	
 /*	this object slotsMachine handles the abstracted behavior of the virtual slots machine
 	and also stores data relevant to a slots machine irl, such as symbols on each reel	*/
 var slotsMachine = {
 	reel: ["won", "2", "3", "4", "5", "6", "7", "8", "9", "doge", "nCage", "bork"],
-
-	/* 	the validatePlay function checks 
-		that the "player" has "inserted" a dogecoin token to allow play of game;
-		the default value is FALSE, and if a token is detected, validatePlay is
-		then flagged as TRUE */
-	
-	validatePlay: function(coinsInserted) {
-		$("#play").click(alert("You pud in one dogecoin!"))
-	},
-
 
 	/*	the pullLever function "pulls" the slot machine's lever: 
 		it generates a new array with length of 3, taking a randomly selected index
@@ -45,16 +50,20 @@ var slotsMachine = {
 		//hiearchies of win conditions are more clearly documented in the README.md
 		
 		if (	((result[0] == "7") && (result[1] == "7") && (result[2] == "7")) ||
-		      	((result[0] == "doge") && (result[1] == "doge") && (result[2] == "doge")) 	)
+		      	((result[0] == "doge") && (result[1] == "doge") && (result[2] == "doge")) 	) {
 			console.log("WOW! yuor the biggest winner!!! dang oh heck")  
+			coins += 5	}
 		else if (	((result[0] == "nCage") && (result[1] == "nCage") && (result[2] == "nCage")) ||
-		      		((result[0] == "bork") && (result[1] == "bork") && (result[2] == "bork")) 	)		
-			console.log("ur breddy good wow")
-		else if ( (result[0] == "won") && (result[1]=="won") && (result[2])=="won")
+		      		((result[0] == "bork") && (result[1] == "bork") && (result[2] == "bork")) 	) {		
+			console.log("ur breddy good wow") 
+			coins += 3	}
+		else if ( (result[0] == "won") && (result[1]=="won") && (result[2])=="won") {
 			console.log("FREE PLAYYYYY!!!")
-		else if ((result[0] == result[1]) && (result[0] == result[2]) && (result[1] == result[2]))
+			/*free play!*/}
+		else if ((result[0] == result[1]) && (result[0] == result[2]) && (result[1] == result[2])) {
 			//	^^evaluates that reels 1, 2 and 3 are equal, assuming no higher win condition has been met
 			console.log("You win!")
+			coins++	}
 		else
 			console.log("You lost!")
 	}//close payOut function
