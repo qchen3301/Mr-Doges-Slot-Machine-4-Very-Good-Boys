@@ -5,24 +5,27 @@
 	//coins represents the player's pot of tokens. The game instansiates with 5 coins
 	let coins = 5
 
-	
-		$("#play").click( function() {	
-			coins--
-			$("#userCoins").text(`${coins}x shinebois`)
-			console.log(coins)
-			if (coins < 1){
-				alert("Hey u! No more shinybois uwu")
-				$("#play").attr("disabled","disabled")}
-			else {
-				alert("U put in a dogecoin")		
+	$("#play").click( function() {	
+		coins--
+		$("#userCoins").text(`${coins}x shinebois`)
+		console.log(coins)
+		if (coins < 1){
+			alert("Hey u! No more shinybois uwu")
+			$("#play").attr("disabled","disabled")}
+		else {
+			alert("U put in a dogecoin")		
 			}
-		})//close inner .click function()
-			
+	})//close .click function()
+
+	$("#fade").click( function() {
+
+		$("#reelOne").addClass("animated fadeOutUp")	
+	})
 	
 /*	this object slotsMachine handles the abstracted behavior of the virtual slots machine
 	and also stores data relevant to a slots machine irl, such as symbols on each reel	*/
 var slotsMachine = {
-	reel: ["won", "2", "3", "4", "5", "6", "7", "8", "9", "doge", "nCage", "bork"],
+	reel: ["won", "two", "three", "four", "five", "six", "seven", "eight", "nine", "doge", "nCage", "bork"],
 
 	/*	the pullLever function "pulls" the slot machine's lever: 
 		it generates a new array with length of 3, taking a randomly selected index
@@ -36,7 +39,6 @@ var slotsMachine = {
 		thirdSlot = this.reel[Math.floor(Math.random()*this.reel.length)]
 
 		result = [firstSlot, secondSlot, thirdSlot]
-		
 	}, //close pullLever function
 
 	/*	the payOut function evaluates the results of the pullLever function
@@ -48,7 +50,6 @@ var slotsMachine = {
 	payOut: function(){
 		console.log(result)
 		//hiearchies of win conditions are more clearly documented in the README.md
-		
 		if (	((result[0] == "7") && (result[1] == "7") && (result[2] == "7")) ||
 		      	((result[0] == "doge") && (result[1] == "doge") && (result[2] == "doge")) 	) {
 			console.log("WOW! yuor the biggest winner!!! dang oh heck")  
@@ -67,6 +68,13 @@ var slotsMachine = {
 		else
 			console.log("You lost!")
 	}//close payOut function
+
+	/*	this function takes the values in result[], concats those values with "assets/" and ".jpg",
+		then maps it to a new array, displayReel. The indices of this array will be accessed by 
+		HTML elements to display in the document the results of the user's draws from pullLever()	*/
+	slotsDisplay: function() {
+		
+	}//close slotsDisplay function
 
 }//close slotsMachine object	
 

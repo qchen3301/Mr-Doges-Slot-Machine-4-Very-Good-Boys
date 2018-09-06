@@ -1,0 +1,21 @@
+/*	Animation for slot machine documentation:
+	Each "reel" of the slot machine will be animated
+	upon intialization of the slotmachine JS object by the user.
+	The resting image of sprite-doge will spin faster and faster for a duration of 5 seconds,
+	staggered from the first reel on the left to the last reel, while fading away on a slowed delay
+	as the result of the random selection from the slotmachine object's reel component fades into view 	*/
+
+	#reelOne {
+		height: 150px;
+		width: 150px;
+		background-color: powderblue;
+	}
+
+	#slot1 {
+		animation: rotateStart 2s infinite linear;
+	}
+
+	@keyframes rotateStart {
+		from { transform: rotate(0deg); }
+		to { transform: rotate(359deg); }
+	}
