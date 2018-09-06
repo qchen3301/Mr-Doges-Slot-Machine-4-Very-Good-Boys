@@ -18,10 +18,12 @@
 	})//close .click function()
 
 	$("#fade").click( function() {
-
-		$("#reelOne").addClass("animated fadeOutUp")	
+		$(".slotReels").addClass("animated fadeOutUp")
+		$(".col-content").css("background-image",`url(${url[x]})`)
 	})
 	
+
+
 /*	this object slotsMachine handles the abstracted behavior of the virtual slots machine
 	and also stores data relevant to a slots machine irl, such as symbols on each reel	*/
 var slotsMachine = {
@@ -50,7 +52,7 @@ var slotsMachine = {
 	payOut: function(){
 		console.log(result)
 		//hiearchies of win conditions are more clearly documented in the README.md
-		if (	((result[0] == "7") && (result[1] == "7") && (result[2] == "7")) ||
+		if (	((result[0] == "seven") && (result[1] == "seven") && (result[2] == "seven")) ||
 		      	((result[0] == "doge") && (result[1] == "doge") && (result[2] == "doge")) 	) {
 			console.log("WOW! yuor the biggest winner!!! dang oh heck")  
 			coins += 5	}

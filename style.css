@@ -5,26 +5,32 @@
 	staggered from the first reel on the left to the last reel, while fading away on a slowed delay
 	as the result of the random selection from the slotmachine object's reel component fades into view 	*/
 
-body {
-	background-image: url("assets/background.gif")
-}
+body { background-image: url("assets/background.gif") }
 
 .banner {
 	font: italic bold 1.4vw "Comic Sans MS";
 	color: #FF0000;
+	outline: 3px dashed green;
 	text-shadow: 5px 5px salmon;
 	text-align: center;
-	background-image: url("assets/cropped-doge.png")
+	max-width: 1280px;
+	background-image: url("assets/cropped-doge.png");
+	background-size:cover;}
+
+#mar1 { font: 0.9vw "Comic Sans MS"; color: #00ff00 ; }
+#mar2 { font: 0.9vw "Comic Sans MS"; color: cyan; }
+
+.slots { 
+	/*max-width: 640px;*/
 }
 
-#mar1 {
-	font: 0.9vw "Comic Sans MS";
-	color: #00ff00 ;
-}
-
-#mar2 {
-	font: 0.9vw "Comic Sans MS";
-	color: cyan;
+.col-content {
+	border: solid 3px orange;
+	background-color: lightblue;
+	max-width: 180px;
+	height: 180px;
+	margin: 30px;
+	/*background-image: url('assets/ragecage.jpg');*/
 }
 
 
@@ -33,7 +39,7 @@ body {
 	width: 150px;		
 	background-color: powderblue;	}
 
-#slot1, #slot2, #slot3 {
+#slot1Spin, #slot2Spin, #slot3Spin {
 	animation: rotateStart 2s infinite linear; 
 	 }
 
