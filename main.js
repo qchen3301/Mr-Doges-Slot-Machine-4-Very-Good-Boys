@@ -67,7 +67,7 @@ var slotsMachine = {
 			coins++	}
 		else
 			console.log("You lost!")
-	}//close payOut function
+	},//close payOut function
 
 	/*	this function takes the values in result[], concats those values with "assets/" and ".jpg",
 		then maps it to a new array, displayReel. The indices of this array will be accessed by 
