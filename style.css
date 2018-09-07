@@ -30,9 +30,11 @@ body { background-image: url("assets/background.gif") }
 	max-width: 180px;
 	height: 180px;
 	margin: 30px;
-	/*background-image: url('assets/ragecage.jpg');*/
 }
 
+.reelResults {
+/*waiting for instructions from jQuery*/
+}
 
 #reelOne {
 	height: 150px;

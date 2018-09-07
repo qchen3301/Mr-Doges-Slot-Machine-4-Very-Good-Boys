@@ -19,7 +19,8 @@
 
 	$("#fade").click( function() {
 		$(".slotReels").addClass("animated fadeOutUp")
-		$(".col-content").css("background-image",`url(${url[x]})`)
+		$(".reelResults").addClass("animated fadeIn").css("background-image",`url(${displayReel[1]})`)
+		//css("background-image",`url(${displayReel[1]})`)
 	})
 	
 
@@ -27,7 +28,7 @@
 /*	this object slotsMachine handles the abstracted behavior of the virtual slots machine
 	and also stores data relevant to a slots machine irl, such as symbols on each reel	*/
 var slotsMachine = {
-	reel: ["won", "two", "three", "four", "five", "six", "seven", "eight", "nine", "doge", "nCage", "bork"],
+	reel: ["won", "two", "three", "four", "five", "six", "seven", "eight", "nine", "doge", "ragecage", "bork"],
 
 	/*	the pullLever function "pulls" the slot machine's lever: 
 		it generates a new array with length of 3, taking a randomly selected index
@@ -56,7 +57,7 @@ var slotsMachine = {
 		      	((result[0] == "doge") && (result[1] == "doge") && (result[2] == "doge")) 	) {
 			console.log("WOW! yuor the biggest winner!!! dang oh heck")  
 			coins += 5	}
-		else if (	((result[0] == "nCage") && (result[1] == "nCage") && (result[2] == "nCage")) ||
+		else if (	((result[0] == "ragecage") && (result[1] == "ragecage") && (result[2] == "ragecage")) ||
 		      		((result[0] == "bork") && (result[1] == "bork") && (result[2] == "bork")) 	) {		
 			console.log("ur breddy good wow") 
 			coins += 3	}
@@ -75,7 +76,9 @@ var slotsMachine = {
 		then maps it to a new array, displayReel. The indices of this array will be accessed by 
 		HTML elements to display in the document the results of the user's draws from pullLever()	*/
 	slotsDisplay: function() {
-		
+		displayReel = []
+		result.map((reels) => {displayReel.push(`assets/${reels}.jpg`)} )
+		return displayReel
 	}//close slotsDisplay function
 
 }//close slotsMachine object	
@@ -83,11 +86,5 @@ var slotsMachine = {
 console.log("First play!!!")
 slotsMachine.pullLever()	
 slotsMachine.payOut()
+slotsMachine.slotsDisplay()
 
-console.log("Second play!!!")
-slotsMachine.pullLever()
-slotsMachine.payOut()
-
-console.log("Third play! (WOW)")
-slotsMachine.pullLever()
-slotsMachine.payOut()
