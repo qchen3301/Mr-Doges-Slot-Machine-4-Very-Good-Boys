@@ -14,11 +14,13 @@ Any other matches: one dogecoin
 ```
 Game is over when yuo have no more dogecoin to give doge. Doge reminds yuo to play very responsible. Much addict. Very danger. 
 
-## Wireframes
+## Wireframes and Trello
 ![initialized state](https://raw.githubusercontent.com/qchen3301/Mr-Doges-Slot-Machine-4-Very-Good-Boys/master/wireframe01.jpg)
 ![play state](https://raw.githubusercontent.com/qchen3301/Mr-Doges-Slot-Machine-4-Very-Good-Boys/master/wireframe02.jpg)
 ![lose state](https://raw.githubusercontent.com/qchen3301/Mr-Doges-Slot-Machine-4-Very-Good-Boys/master/wireframe03.jpg)
 ![win state](https://raw.githubusercontent.com/qchen3301/Mr-Doges-Slot-Machine-4-Very-Good-Boys/master/wireframe04.jpg)
+
+https://trello.com/b/4Z8E6h4s/ga-wdi-17-project-1
 
 ## Technologies Used
 - Functionality written in jQuery 3. 
