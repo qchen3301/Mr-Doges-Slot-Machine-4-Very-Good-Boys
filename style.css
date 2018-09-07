@@ -57,6 +57,38 @@ body { background-image: url("assets/background.gif") }
 	animation: rotateStart 2s infinite linear; 
 	 }
 
+.userScore {
+	font: 26pt "Comic Sans MS";
+	text-align: center;
+	color: cyan;
+	background-image: url("assets/rpgUIbox.png");
+	background-size: 100% 100%;
+	max-width: 500px;
+	height: 150px;
+
+}
+
+#playersTokens{
+	font: 33pt "Comic Sans MS";
+	color: cyan;
+}
+
+.consoleControls {
+	font: 26pt "Comic Sans MS";
+	text-align: center;
+	color: white;
+	background-image: url("assets/rpgUIbox.png");
+	background-size: 100% 100%;
+	max-width: 700px;
+	height: 300px;
+}
+
+.btn-flat {
+	font: 18pt "Comic Sans MS";
+	color: white;
+	text-align: center;
+}
+
 @keyframes blinko {
 	0% {opacity: 1;}
 	50% {opacity: 0;}
