@@ -10,15 +10,27 @@ body { background-image: url("assets/background.gif") }
 .banner {
 	font: italic bold 1.4vw "Comic Sans MS";
 	color: #FF0000;
-	outline: 3px dashed green;
+	border: 3px dashed green;
 	text-shadow: 5px 5px salmon;
 	text-align: center;
 	max-width: 1280px;
 	background-image: url("assets/cropped-doge.png");
-	background-size:cover;}
+	background-size:cover;
+	/*background-repeat: repeat-y;*/
+	/*animation: animateBannerBackground 2s infinite alternate;*/
+	animation-duration: 25s;
+}
 
 #mar1 { font: 0.9vw "Comic Sans MS"; color: #00ff00 ; }
 #mar2 { font: 0.9vw "Comic Sans MS"; color: cyan; }
+
+.topMenu {
+	text-align: center;
+	font: italic bold 14pt "Comic Sans MS";
+	text-shadow: 2px 2px yellow;
+	color: orange;
+	margin-top: 20px;
+}
 
 .slots { 
 	/*max-width: 640px;*/
@@ -48,10 +60,16 @@ body { background-image: url("assets/background.gif") }
 @keyframes blinko {
 	0% {opacity: 1;}
 	50% {opacity: 0;}
-	100% {opacity: 1;}	}
+	100% {opacity: 1;}	
+}
 
+@keyframes animateBannerBackground {
+	0% {transform: translateY(0);}
+	100%{transform: translateY(-40px);}
+}
 
 
 @keyframes rotateStart {
 	from { transform: rotate(0deg); }
-	to { transform: rotate(359deg); }	}
+	to { transform: rotate(359deg); }	
+}
