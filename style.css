@@ -1,4 +1,22 @@
-body { background-image: url("assets/background.gif") }
+body { background-image: url("assets/background.gif");}
+
+h1,h2 {
+	font: italic bold 2.4vw "Comic Sans MS";
+	text-shadow: 4px 2px blue;
+	color: green;
+	text-align: center;
+}
+
+table, th, td {
+	border: 1px solid yellow;
+	max-width: 300px;
+	max-height: 200px;
+}
+
+#rulesTable {
+	max-height: 200px;
+	max-width: 903px;
+}
 
 .banner {
 	font: italic bold 1.4vw "Comic Sans MS";
