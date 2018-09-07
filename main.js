@@ -83,6 +83,8 @@ $("#playSlots").click( function() {
 			alert("U put in a dogecoin")
 			/*	in case this is not the player's initial turn, the next three jQuery statements
 				prevent the HTML tag being targeted from accruing - it in effect "resets" the slot machine 	*/
+			$(".col-content").css("background-color","lightblue")
+			$(".slotSpin").attr("src","assets/doge-vector.png")
 			$(".firstReelResults").addClass("animated fadeIn").empty()	
 			$(".secondReelResults").addClass("animated fadeIn").empty()		
 			$(".thirdReelResults").addClass("animated fadeIn").empty()	
@@ -99,11 +101,14 @@ $("#playSlots").click( function() {
 
 //this function "cheats" the slot machine, and will always return three golden doges
 $("#cheatSlots").click( function() {
+	$(".col-content").css("background-color","#add8e600")
+	$(".slotSpin").attr("src","")
+	$(".firstReelResults").addClass("animated fadeIn").empty()	
+	$(".secondReelResults").addClass("animated fadeIn").empty()		
+	$(".thirdReelResults").addClass("animated fadeIn").empty()
 	slotsMachine.cheat()
 	slotsMachine.payOut()
 	slotsMachine.slotsDisplay()
-	$(".col-content").css("background-color","#add8e600")
-	$(".slotSpin").attr("src","")
 	$(".firstReelResults").addClass("animated fadeIn").prepend(`<img src=${displayReel[0]}>`)	
 	$(".secondReelResults").addClass("animated fadeIn").prepend(`<img src=${displayReel[1]}>`)		
 	$(".thirdReelResults").addClass("animated fadeIn").prepend(`<img src=${displayReel[2]}>`)
