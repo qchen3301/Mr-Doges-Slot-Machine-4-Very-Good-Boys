@@ -37,26 +37,33 @@ var slotsMachine = {
 		      	((result[0] == "dogeSymbol") && (result[1] == "dogeSymbol") && (result[2] == "dogeSymbol")) 	) {
 			swal({
 				text: "WOW!!! yuor the biggest winner!!! dang (heck)",
-				imageUrl: "assets/essplosion.gif",
 				button: "everything will be だいじょうぶ",
 			})
 
-
-			
 			coins += 5	}
 		else if (	((result[0] == "ragecage") && (result[1] == "ragecage") && (result[2] == "ragecage")) ||
 		      		((result[0] == "bork") && (result[1] == "bork") && (result[2] == "bork")) 	) {		
-			console.log("ur breddy good wow") 
+			swal({
+				text: "ur breddy good",
+				button: "much win",
+			}) 
 			coins += 3	}
 		else if ( (result[0] == "won") && (result[1]=="won") && (result[2])=="won") {
-			console.log("FREE PLAYYYYY!!!")
-			/*free play!*/}
+			swal({
+				text: "FREE PLAYYYYY!!!",
+				button: "awww yiss",
+			})}
 		else if ((result[0] == result[1]) && (result[0] == result[2]) && (result[1] == result[2])) {
 			//	^^evaluates that reels 1, 2 and 3 are equal, assuming no higher win condition has been met
-			console.log("You win!")
+			swal({
+				text: "ur win",
+				button: "thank u uWu",
+			})
 			coins++	}
 		else
-			console.log("You lost!")
+			swal({
+				text:"no shinebois",
+				button: "much gambel",})
 
 	},//close payOut function
 
@@ -82,12 +89,13 @@ var slotsMachine = {
 $("#playSlots").click( function() {	
 		coins--		
 		$("#playersTokens").text(`${coins}`)	
-		console.log(coins)
 		if (coins < 1){	
-			alert("Hey u! No more shinybois uwu")
-			$("#playSlots").attr("disabled","disabled")}	//
+			swal({
+				text:"Hey u! No more shinybois",
+				button: "heck",
+			})
+			$("#playSlots").attr("disabled","disabled")}
 		else {
-			alert("U put in a dogecoin")
 			/*	in case this is not the player's initial turn, the next five jQuery statements
 				prevent the HTML tag being targeted from accruing - it in effect "resets" the slot machine 	*/
 			$(".col-content").css("background-color","lightblue")
