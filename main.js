@@ -1,7 +1,3 @@
-// urls = [pic1.jpg, pic2.jpg, pic3.jpg, pic4.jpg]
-
-// <div>	<img src=urls[0]></div>
-
 	//coins represents the player's pot of tokens. The game instansiates with 5 coins
 	let coins = 5
 
@@ -9,7 +5,7 @@
 	and also stores data relevant to a slots machine irl, such as symbols on each reel	*/
 var slotsMachine = {
 	reel: ["won", "two", "three", "four", "five", "six", "seven", "eight", "nine", "dogeSymbol", "ragecage", "bork"],
-
+	result: [],
 	/*	the pullLever function "pulls" the slot machine's lever: 
 		it generates a new array with length of 3, taking a randomly selected index
 		from the reel array, and inserting them sequentially into
@@ -24,6 +20,10 @@ var slotsMachine = {
 		result = [firstSlot, secondSlot, thirdSlot]
 	}, //close pullLever function
 
+	//exactly what it says on the tin
+	cheat: function() {
+		result = ["dogeSymbol", "dogeSymbol", "dogeSymbol"]
+	},
 	/*	the payOut function evaluates the results of the pullLever function
 		and responds accordingly. If the 3 slots match up, the user receives a prize. 
 		If the 3 slots don't match, the user does not. Certain slot combinations
@@ -64,10 +64,7 @@ var slotsMachine = {
 
 }//close slotsMachine object	
 
-// console.log("First play!!!")
-// slotsMachine.pullLever()	
-// slotsMachine.payOut()
-// slotsMachine.slotsDisplay()
+
 
 /*	this function initiates a "tug" of the lever (actually button)
 	Structure: take away one token from player to validate player 	
@@ -100,8 +97,14 @@ $("#playSlots").click( function() {
 			}
 	})//close .click function()
 
-	// $("#fade").click( function() {
-	// 	$(".slotReels").addClass("animated fadeOutUp")
-	// 	$(".reelResults").addClass("animated fadeIn").css("background-image",`url(${displayReel[1]})`)
-	// 	//css("background-image",`url(${displayReel[1]})`)
-	// })
+//this function "cheats" the slot machine, and will always return three golden doges
+$("#cheatSlots").click( function() {
+	slotsMachine.cheat()
+	slotsMachine.payOut()
+	slotsMachine.slotsDisplay()
+	$(".col-content").css("background-color","#add8e600")
+	$(".slotSpin").attr("src","")
+	$(".firstReelResults").addClass("animated fadeIn").prepend(`<img src=${displayReel[0]}>`)	
+	$(".secondReelResults").addClass("animated fadeIn").prepend(`<img src=${displayReel[1]}>`)		
+	$(".thirdReelResults").addClass("animated fadeIn").prepend(`<img src=${displayReel[2]}>`)
+})//close .cliock function()
