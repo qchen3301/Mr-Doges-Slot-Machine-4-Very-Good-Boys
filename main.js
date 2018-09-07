@@ -35,7 +35,14 @@ var slotsMachine = {
 		//hiearchies of win conditions are more clearly documented in the README.md
 		if (	((result[0] == "seven") && (result[1] == "seven") && (result[2] == "seven")) ||
 		      	((result[0] == "dogeSymbol") && (result[1] == "dogeSymbol") && (result[2] == "dogeSymbol")) 	) {
-			console.log("WOW! yuor the biggest winner!!! dang oh heck")  
+			swal({
+				text: "WOW!!! yuor the biggest winner!!! dang (heck)",
+				imageUrl: "assets/essplosion.gif",
+				button: "everything will be だいじょうぶ",
+			})
+
+
+			
 			coins += 5	}
 		else if (	((result[0] == "ragecage") && (result[1] == "ragecage") && (result[2] == "ragecage")) ||
 		      		((result[0] == "bork") && (result[1] == "bork") && (result[2] == "bork")) 	) {		
@@ -81,7 +88,7 @@ $("#playSlots").click( function() {
 			$("#playSlots").attr("disabled","disabled")}	//
 		else {
 			alert("U put in a dogecoin")
-			/*	in case this is not the player's initial turn, the next three jQuery statements
+			/*	in case this is not the player's initial turn, the next five jQuery statements
 				prevent the HTML tag being targeted from accruing - it in effect "resets" the slot machine 	*/
 			$(".col-content").css("background-color","lightblue")
 			$(".slotSpin").attr("src","assets/doge-vector.png")
@@ -91,6 +98,7 @@ $("#playSlots").click( function() {
 			slotsMachine.pullLever()	
 			slotsMachine.payOut()
 			slotsMachine.slotsDisplay()
+			$("#playersTokens").text(`${coins}`)
 			$(".col-content").css("background-color","#add8e600")
 			$(".slotSpin").attr("src","")
 			$(".firstReelResults").addClass("animated fadeIn").prepend(`<img src=${displayReel[0]}>`)	
@@ -109,6 +117,8 @@ $("#cheatSlots").click( function() {
 	slotsMachine.cheat()
 	slotsMachine.payOut()
 	slotsMachine.slotsDisplay()
+	$("#playersTokens").text(`${coins}`)
+	$("#playSlots").removeAttr("disabled")
 	$(".firstReelResults").addClass("animated fadeIn").prepend(`<img src=${displayReel[0]}>`)	
 	$(".secondReelResults").addClass("animated fadeIn").prepend(`<img src=${displayReel[1]}>`)		
 	$(".thirdReelResults").addClass("animated fadeIn").prepend(`<img src=${displayReel[2]}>`)
