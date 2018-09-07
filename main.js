@@ -50,7 +50,7 @@ var slotsMachine = {
 			coins++	}
 		else
 			console.log("You lost!")
-		
+
 	},//close payOut function
 
 	/*	this function takes the values in result[], concats those values with "assets/" and ".jpg",
@@ -69,23 +69,34 @@ var slotsMachine = {
 // slotsMachine.payOut()
 // slotsMachine.slotsDisplay()
 
-//this function initiates a "tug" of the lever (actually button)
+/*	this function initiates a "tug" of the lever (actually button)
+	Structure: take away one token from player to validate player 	
+	update player's tokens inventory to reflect the cost
+	if player runs out of tokens, disable play
+	if player still has tokens, call functions from the object slotsMachine to select three slots symbols 
+	using jQuery, pseudo-animate a slot machine */
 $("#playSlots").click( function() {	
-		coins--		//take away one token from player to validate play
-		$("#playersTokens").text(`${coins}`)	//upate player's tokens inventory to reflect the cost
+		coins--		
+		$("#playersTokens").text(`${coins}`)	
 		console.log(coins)
 		if (coins < 1){	
 			alert("Hey u! No more shinybois uwu")
-			$("#playSlots").attr("disabled","disabled")}	//if player runs out of tokens, disable play
+			$("#playSlots").attr("disabled","disabled")}	//
 		else {
 			alert("U put in a dogecoin")
+			/*	in case this is not the player's initial turn, the next three jQuery statements
+				prevent the HTML tag being targeted from accruing - it in effect "resets" the slot machine 	*/
+			$(".firstReelResults").addClass("animated fadeIn").empty()	
+			$(".secondReelResults").addClass("animated fadeIn").empty()		
+			$(".thirdReelResults").addClass("animated fadeIn").empty()	
 			slotsMachine.pullLever()	
 			slotsMachine.payOut()
 			slotsMachine.slotsDisplay()
-			$(".slotReels").addClass("animated fadeOutUp")
-			$(".firstReelResults").addClass("animated fadeIn").css("background-image",`url(${displayReel[0]})`)	
-			$(".secondReelResults").addClass("animated fadeIn").css("background-image",`url(${displayReel[1]})`)	
-			$(".thirdReelResults").addClass("animated fadeIn").css("background-image",`url(${displayReel[2]})`)	
+			$(".col-content").css("background-color","#add8e600")
+			$(".slotSpin").attr("src","")
+			$(".firstReelResults").addClass("animated fadeIn").prepend(`<img src=${displayReel[0]}>`)	
+			$(".secondReelResults").addClass("animated fadeIn").prepend(`<img src=${displayReel[1]}>`)		
+			$(".thirdReelResults").addClass("animated fadeIn").prepend(`<img src=${displayReel[2]}>`)	
 			}
 	})//close .click function()
 

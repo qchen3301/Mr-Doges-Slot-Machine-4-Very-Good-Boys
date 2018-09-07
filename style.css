@@ -53,8 +53,8 @@ body { background-image: url("assets/background.gif") }
 	width: 150px;		
 	background-color: powderblue;	}
 
-#slot1Spin, #slot2Spin, #slot3Spin {
-	animation: rotateStart 2s infinite linear; 
+.slotSpin {
+	animation: rotateStart 1s infinite linear; 
 	 }
 
 .userScore {
