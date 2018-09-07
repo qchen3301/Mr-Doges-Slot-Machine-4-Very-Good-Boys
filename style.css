@@ -44,9 +44,9 @@ body { background-image: url("assets/background.gif") }
 	margin: 30px;
 }
 
-.reelResults {
-/*waiting for instructions from jQuery*/
-}
+.firstReelResults {/*waiting for instructions from jQuery*/}
+.secondReelResults {/*waiting for instructions from jQuery*/}
+.thirdReelResults {/*waiting for instructions from jQuery*/}
 
 #reelOne {
 	height: 150px;

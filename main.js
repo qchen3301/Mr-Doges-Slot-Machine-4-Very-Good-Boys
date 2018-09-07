@@ -5,30 +5,10 @@
 	//coins represents the player's pot of tokens. The game instansiates with 5 coins
 	let coins = 5
 
-	$("#play").click( function() {	
-		coins--
-		$("#userCoins").text(`${coins}x shinebois`)
-		console.log(coins)
-		if (coins < 1){
-			alert("Hey u! No more shinybois uwu")
-			$("#play").attr("disabled","disabled")}
-		else {
-			alert("U put in a dogecoin")		
-			}
-	})//close .click function()
-
-	$("#fade").click( function() {
-		$(".slotReels").addClass("animated fadeOutUp")
-		$(".reelResults").addClass("animated fadeIn").css("background-image",`url(${displayReel[1]})`)
-		//css("background-image",`url(${displayReel[1]})`)
-	})
-	
-
-
 /*	this object slotsMachine handles the abstracted behavior of the virtual slots machine
 	and also stores data relevant to a slots machine irl, such as symbols on each reel	*/
 var slotsMachine = {
-	reel: ["won", "two", "three", "four", "five", "six", "seven", "eight", "nine", "doge", "ragecage", "bork"],
+	reel: ["won", "two", "three", "four", "five", "six", "seven", "eight", "nine", "dogeSymbol", "ragecage", "bork"],
 
 	/*	the pullLever function "pulls" the slot machine's lever: 
 		it generates a new array with length of 3, taking a randomly selected index
@@ -54,7 +34,7 @@ var slotsMachine = {
 		console.log(result)
 		//hiearchies of win conditions are more clearly documented in the README.md
 		if (	((result[0] == "seven") && (result[1] == "seven") && (result[2] == "seven")) ||
-		      	((result[0] == "doge") && (result[1] == "doge") && (result[2] == "doge")) 	) {
+		      	((result[0] == "dogeSymbol") && (result[1] == "dogeSymbol") && (result[2] == "dogeSymbol")) 	) {
 			console.log("WOW! yuor the biggest winner!!! dang oh heck")  
 			coins += 5	}
 		else if (	((result[0] == "ragecage") && (result[1] == "ragecage") && (result[2] == "ragecage")) ||
@@ -70,6 +50,7 @@ var slotsMachine = {
 			coins++	}
 		else
 			console.log("You lost!")
+		
 	},//close payOut function
 
 	/*	this function takes the values in result[], concats those values with "assets/" and ".jpg",
@@ -77,14 +58,39 @@ var slotsMachine = {
 		HTML elements to display in the document the results of the user's draws from pullLever()	*/
 	slotsDisplay: function() {
 		displayReel = []
-		result.map((reels) => {displayReel.push(`assets/${reels}.jpg`)} )
+		result.map((reels) => {displayReel.push(`assets/${reels}.png`)} )
 		return displayReel
 	}//close slotsDisplay function
 
 }//close slotsMachine object	
 
-console.log("First play!!!")
-slotsMachine.pullLever()	
-slotsMachine.payOut()
-slotsMachine.slotsDisplay()
+// console.log("First play!!!")
+// slotsMachine.pullLever()	
+// slotsMachine.payOut()
+// slotsMachine.slotsDisplay()
 
+//this function initiates a "tug" of the lever (actually button)
+$("#playSlots").click( function() {	
+		coins--		//take away one token from player to validate play
+		$("#playersTokens").text(`${coins}`)	//upate player's tokens inventory to reflect the cost
+		console.log(coins)
+		if (coins < 1){	
+			alert("Hey u! No more shinybois uwu")
+			$("#playSlots").attr("disabled","disabled")}	//if player runs out of tokens, disable play
+		else {
+			alert("U put in a dogecoin")
+			slotsMachine.pullLever()	
+			slotsMachine.payOut()
+			slotsMachine.slotsDisplay()
+			$(".slotReels").addClass("animated fadeOutUp")
+			$(".firstReelResults").addClass("animated fadeIn").css("background-image",`url(${displayReel[0]})`)	
+			$(".secondReelResults").addClass("animated fadeIn").css("background-image",`url(${displayReel[1]})`)	
+			$(".thirdReelResults").addClass("animated fadeIn").css("background-image",`url(${displayReel[2]})`)	
+			}
+	})//close .click function()
+
+	// $("#fade").click( function() {
+	// 	$(".slotReels").addClass("animated fadeOutUp")
+	// 	$(".reelResults").addClass("animated fadeIn").css("background-image",`url(${displayReel[1]})`)
+	// 	//css("background-image",`url(${displayReel[1]})`)
+	// })
